@@ -3,7 +3,7 @@
 {% block title %}{{ parent() }} | Détails{% endblock %}
 
 {% block body %}
-    <div>{{ produit.libelle }}</div>
+    <h2>{{ produit.libelle }}</h2>
     <div>Prix : {{ produit.prix}}</div>
     <div>Référence : {{ produit.reference }}</div>
     <div>Stock : {{ produit.stock }}</div>

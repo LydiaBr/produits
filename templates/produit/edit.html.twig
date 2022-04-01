@@ -3,10 +3,10 @@
 {% block title %}{{ parent() }} | Editer{% endblock %}
 
 {% block body %}
-    <div>Modifier un produit</div>
+    <h2>Modifier un produit</h2>
     {{ form_start(produitForm) }}
     {{ form_widget(produitForm) }}
-    <button>Modifier</button>
+    <button class="btn btn-dark">Modifier</button>
     {{ form_end(produitForm) }}
 
 {% endblock %}
