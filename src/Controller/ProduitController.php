@@ -63,9 +63,25 @@ class ProduitController extends AbstractController
     /**
      * @Route("/produits/edit/{id}", name="produit_edit")
      */
-    public function edit(int $id, ProduitRepository $produitRepository, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, int $id, ProduitRepository $produitRepository, EntityManagerInterface $entityManager): Response
     {
-        return $this->render('produit/edit.html.twig');
+        $produit = $produitRepository->find($id);
+        $produitForm = $this->createForm(ProduitType::class,$produit);
+
+        $produitForm->handleRequest($request);
+
+        if($produitForm->isSubmitted() && $produitForm->isValid()){
+            $entityManager->persist($produit);
+            $entityManager->flush();
+
+            $this->addFlash('success','Le produit a bien été modifié!');
+
+            return $this->redirectToRoute('produit_details',['id'=>$produit->getId()]);
+        }
+
+        return $this->render('produit/edit.html.twig',[
+            "produitForm"=>$produitForm->createView()
+        ]);
     }
 
     /**
