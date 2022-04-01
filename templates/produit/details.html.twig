@@ -2,4 +2,17 @@
 
 {% block title %}{{ parent() }} | Détails{% endblock %}
 
-{% block body %}{% endblock %}
+{% block body %}
+    <div>{{ produit.libelle }}</div>
+    <div>Prix : {{ produit.prix}}</div>
+    <div>Référence : {{ produit.reference }}</div>
+    <div>Stock : {{ produit.stock }}</div>
+    <div>Ajouté le : {{ produit.dateAjout | date('d/M/Y')}}</div>
+
+
+
+
+
+
+
+{% endblock %}

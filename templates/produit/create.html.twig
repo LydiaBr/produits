@@ -2,4 +2,10 @@
 
 {% block title %}{{ parent() }} | Ajouter{% endblock %}
 
-{% block body %}{% endblock %}
+{% block body %}
+    <div>Ajouter un produit</div>
+    {{ form_start(produitForm) }}
+    {{ form_widget(produitForm) }}
+    <button>Ajouter</button>
+    {{ form_end(produitForm) }}
+{% endblock %}

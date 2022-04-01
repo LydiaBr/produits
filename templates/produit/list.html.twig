@@ -2,4 +2,22 @@
 
 {% block title %}{{ parent() }} | Liste des produits{% endblock %}
 
-{% block body %}{% endblock %}
+{% block body %}
+
+        <section>
+           {% for produit in produits %}
+            <article>
+                <a href="{{ path('produit_details', {'id': produit.id}) }}" title="détails du produit">
+                    {{ produit.libelle }}
+                </a>
+                <a href="{{ path('produit_edit', {'id': produit.id}) }}" title="éditer le produit">
+                    Editer
+                </a>
+                <a href="{{ path('produit_delete', {'id': produit.id}) }}" title="supprimer le produit">
+                    Supprimer
+                </a>
+            </article>
+            {% endfor %}
+        </section>
+
+{% endblock %}

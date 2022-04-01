@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProduitRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProduitRepository::class)
@@ -18,21 +19,27 @@ class Produit
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Veuillez renseigner ce champ!")
+     * @Assert\Length(max="50",maxMessage="Maximum 50 caractères!")
      * @ORM\Column(type="string", length=50)
      */
     private $libelle;
 
     /**
+     * @Assert\NotBlank(message="Veuillez renseigner ce champ!")
+     * @Assert\Length(max="10",maxMessage="Maximum 10 caractères!")
      * @ORM\Column(type="string", length=10)
      */
     private $reference;
 
     /**
+     * @Assert\NotBlank(message="Veuillez renseigner ce champ!")
      * @ORM\Column(type="float")
      */
     private $prix;
 
     /**
+     * @Assert\NotBlank(message="Veuillez renseigner ce champ!")
      * @ORM\Column(type="integer")
      */
     private $stock;
